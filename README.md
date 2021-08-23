@@ -1,6 +1,6 @@
 # Decimal Clock
 
-![clock.png](https://raw.githubusercontent.com/teknologi-umum/decimal-clock/art/clock.png)
+![clock.png](https://raw.githubusercontent.com/teknologi-umum/decimal-clock/main/art/clock.png)
 
 From Wikipedia:
 
