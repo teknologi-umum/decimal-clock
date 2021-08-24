@@ -11,3 +11,34 @@ From Wikipedia:
 In this repository we maintain multiple implementations of Decimal Clock using various bleeding edge frontend framework.
 
 Demo: https://teknologi-umum.github.io/decimal-clock/
+
+## Contributing
+
+Please put everything from both your `src` and `dist` folder in a subfolder, with tooling files at the root of your implementation subfolder:
+
+```
+decimal-clock
++-- react-hook
+    +-- dist
+    |   +-- index.html
+    |   +-- app.js
+    +-- src
+    |   +-- clock-hand.js
+    |   +-- index.js
+    +-- package.json
+    +-- manifest.json
+```
+
+Also include a `manifest.json` file containing:
+
+```
+{
+  "name": "React with Hooks",
+  "srcs": [
+    "dist/index.html",
+    "src/index.js",
+    "src/clock-hand.js"
+  ],
+  "dist": "dist/index.html"
+}
+```
