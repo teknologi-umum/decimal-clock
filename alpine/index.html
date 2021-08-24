@@ -1,64 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decimal Clock</title>
-    <style>*{font-family:sans-serif}h1,h2{text-align:center}#clock-face{position:relative;width:70vh;height:70vh;border:solid 2vh #888;border-radius:37vh;margin:0 auto}#clock-face:before{content:'TEKNUM';display:block;position:absolute;font-size:2.5vh;color:#bbb;font-weight:500;letter-spacing:.3vh;text-align:center;width:100%;top:28%}#clock-face:after{content:'';display:block;position:absolute;width:4%;height:4%;left:50%;top:50%;margin:-2% 0 0 -2%;background:#000;border-radius:50%}.digit{position:absolute;font-size:6vh;height:7vh;width:7vh;margin-left:-3.5vh;margin-top:-3.5vh;text-align:center;user-select:none}.tick{position:absolute;width:.3%;left:50%;margin-left:-.15%;background:#888;height:2%;transform-origin:50% 2500%}.large.tick{height:4%;transform-origin:50% 1250%}#short-hand{position:absolute;width:1%;left:50%;top:27%;margin-left:-.5%;background:#000;height:23%;transform-origin:50% 100%}#long-hand{position:absolute;width:1%;left:50%;top:20%;margin-left:-.5%;background:#000;height:30%;transform-origin:50% 100%}#second-hand{position:absolute;width:.3%;left:50%;top:18%;margin-left:-.15%;background:#000;height:32%;transform-origin:50% 100%}</style>
-    <script src="https://unpkg.com/alpinejs@3.2.4" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decimal Clock</title>
+  <style>*{font-family:sans-serif}h1,h2{text-align:center}#clock-face{position:relative;width:70vh;height:70vh;border:solid 2vh #888;border-radius:37vh;margin:0 auto}#clock-face:before{content:'TEKNUM';display:block;position:absolute;font-size:2.5vh;color:#bbb;font-weight:500;letter-spacing:.3vh;text-align:center;width:100%;top:28%}#clock-face:after{content:'';display:block;position:absolute;width:4%;height:4%;left:50%;top:50%;margin:-2% 0 0 -2%;background:#000;border-radius:50%}.digit{position:absolute;font-size:6vh;height:7vh;width:7vh;margin-left:-3.5vh;margin-top:-3.5vh;text-align:center;user-select:none}.tick{position:absolute;width:.3%;left:50%;margin-left:-.15%;background:#888;height:2%;transform-origin:50% 2500%}.large.tick{height:4%;transform-origin:50% 1250%}#short-hand{position:absolute;width:1%;left:50%;top:27%;margin-left:-.5%;background:#000;height:23%;transform-origin:50% 100%}#long-hand{position:absolute;width:1%;left:50%;top:20%;margin-left:-.5%;background:#000;height:30%;transform-origin:50% 100%}#second-hand{position:absolute;width:.3%;left:50%;top:18%;margin-left:-.15%;background:#000;height:32%;transform-origin:50% 100%}</style>
+  <script src="https://unpkg.com/alpinejs@3.2.4" defer></script>
 </head>
 <body>
-  <div x-if="true">
+  <div x-data="data" x-init="update();">
     <h2>Decimal Clock</h2>
-    <div id="clock-face" x-init="$watch('fractionOfDay', () => console.log(fractionOfDay))">
+    <div id="clock-face">
       <template x-for="(n, i) in 10">
         <div class="digit" x-bind:style="{ left: (50 - Math.sin(Math.PI * i / 5) * 40) + '%', top: (50 + Math.cos(Math.PI * i / 5) * 40) + '%' }" x-text="i"></div>
       </template>
       <template x-for="(n, i) in 100">
         <div x-bind:class="i % 10 === 0 ? 'large tick' : 'tick'"  x-bind:style="{ transform: `rotate(${i * 3.6}deg)` }"></div>
       </template>
-      <template x-show="fractionOfDay !== null">
+      <template x-if="fractionOfDay !== null">
         <div id="short-hand" x-bind:style="{ transform: `rotate(${fractionOfDay * 360 + 180}deg)` }"></div>
       </template>
-      <template x-show="fractionOfDay !== null">
+      <template x-if="fractionOfDay !== null">
         <div id="long-hand" x-bind:style="{ transform: `rotate(${fractionOfDay * 10 % 1 * 360 + 180}deg)` }"></div>
       </template>
-      <template x-show="fractionOfDay !== null">
+      <template x-if="fractionOfDay !== null">
         <div id="second-hand" x-bind:style="{ transform: `rotate(${fractionOfDay * 1000 % 1 * 360 + 180}deg)` }"></div>
       </template>
-        
     </div>
-    <template x-show="timeString !== null">
+    <template x-if="timeString !== null">
       <h1 id="clock-time" x-text="timeString"></h1>
     </template>
   </div>
   <script>
-    let data;
-
-    document.addEventListener('alpine:initialized', () => {
-      data = window.Alpine.reactive({
-        frameRequest: window.requestAnimationFrame(update.bind(this)),
-        fractionOfDay: null,
-        timeString: null,
-      })
-    })
-
-    function start() {
-      data.frameRequest = window.requestAnimationFrame(update.bind(this));
-    }
-
-    function update() {
-      const date = new Date();
-      const timeOfDay = (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds()) * 1000 + date.getMilliseconds();
-      data.fractionOfDay = data.timeOfDay / 86400_000;
-      data.timeString = `${Math.floor(data.fractionOfDay * 10)}:${Math.floor((data.fractionOfDay * 1_000) % 100).toString().padStart(2, "0")}:${Math.floor((data.fractionOfDay * 100_000) % 100).toString().padStart(2, "0")}`;
-      data.frameRequest = window.requestAnimationFrame(update.bind(this));
-    }
-    
-    function stop() {
-      window.cancelAnimationFrame(frameRequest);
-    } 
+    const data = {
+      fractionOfDay: null,
+      timeString: null,
+      update() {
+        const date = new Date();
+        const timeOfDay = (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds()) * 1000 + date.getMilliseconds();
+        this.fractionOfDay = timeOfDay / 86400_000;
+        this.timeString = `${Math.floor(this.fractionOfDay * 10)}:${Math.floor((this.fractionOfDay * 1_000) % 100).toString().padStart(2, '0')}:${Math.floor((this.fractionOfDay * 100_000) % 100).toString().padStart(2, '0')}`;
+        window.requestAnimationFrame(this.update.bind(this));
+      }
+    };
   </script>
 </body>
 </html>
