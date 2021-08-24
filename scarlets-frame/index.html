@@ -10,11 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/scarletsframe@0.34.15/dist/scarletsframe.min.js"></script>
     <script>
         sf.model('decimal-clock', function(My) {
+            let frameRequest;
             My.fractionOfDay = null;
             My.timeString = null;
 
-            My.start = function() {
-                My.frameRequest = requestAnimationFrame(My.update);
+            // When attached on DOM
+            My.init = function() {
+                frameRequest = requestAnimationFrame(My.update);
             }
 
             My.update = function() {
@@ -24,14 +26,13 @@
                 My.fractionOfDay = timeOfDay / 86400_000;
                 My.timeString = `${Math.floor(My.fractionOfDay * 10)}:${Math.floor((My.fractionOfDay * 1_000) % 100).toString().padStart(2, "0")}:${Math.floor((My.fractionOfDay * 100_000) % 100).toString().padStart(2, "0")}`;
 
-                My.frameRequest = requestAnimationFrame(My.update);
+                frameRequest = requestAnimationFrame(My.update);
             }
 
-            My.stop = function() {
-                cancelAnimationFrame(My.frameRequest);
+            // When detached from DOM
+            My.destroy = function() {
+                cancelAnimationFrame(frameRequest);
             }
-
-            My.start();
       });
     </script>
 </head>
