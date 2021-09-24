@@ -1,6 +1,6 @@
 # Decimal Clock
 
-![clock.svg](https://teknum-bot.fly.dev/decimalclock/svg)
+![clock.svg](https://teknum-bot.fly.dev/decimalclock/svg?nocache=1)
 
 From Wikipedia:
 
