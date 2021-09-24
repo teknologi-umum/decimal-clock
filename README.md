@@ -1,6 +1,6 @@
 # Decimal Clock
 
-![clock.png](https://raw.githubusercontent.com/teknologi-umum/decimal-clock/main/clock.png)
+![clock.svg](https://teknum-bot.fly.dev/decimalclock/svg)
 
 From Wikipedia:
 
