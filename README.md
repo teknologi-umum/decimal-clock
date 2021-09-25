@@ -10,7 +10,10 @@ From Wikipedia:
 
 In this repository we maintain multiple implementations of Decimal Clock using various bleeding edge frontend framework.
 
-Demo: https://teknologi-umum.github.io/decimal-clock/
+- alpine: [Demo](https://teknologi-umum.github.io/decimal-clock/alpine) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/alpine) | [Lib](https://alpinejs.dev/)
+- petite-vue: [Demo](https://teknologi-umum.github.io/decimal-clock/petite-vue) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/petite-vue) | [Lib](https://github.com/vuejs/petite-vue)
+- scarlets-frame: [Demo](https://teknologi-umum.github.io/decimal-clock/scarlets-frame) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/scarlets-frame) | [Lib](https://github.com/ScarletsFiction/ScarletsFrame)
+- vanilla: [Demo](https://teknologi-umum.github.io/decimal-clock/vanilla) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vanilla)
 
 ## Contributing
 
