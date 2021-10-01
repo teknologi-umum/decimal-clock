@@ -14,6 +14,8 @@ In this repository we maintain multiple implementations of Decimal Clock using v
 - petite-vue: [Demo](https://teknologi-umum.github.io/decimal-clock/petite-vue) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/petite-vue) | [Lib](https://github.com/vuejs/petite-vue)
 - scarlets-frame: [Demo](https://teknologi-umum.github.io/decimal-clock/scarlets-frame) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/scarlets-frame) | [Lib](https://github.com/ScarletsFiction/ScarletsFrame)
 - vanilla: [Demo](https://teknologi-umum.github.io/decimal-clock/vanilla) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vanilla)
+- react-hooks (via CDN): [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cdn-implementation) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cdn-implementation) | [Lib](https://reactjs.org/)
+- react-hooks (via create-react-app): [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cra-implementation/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cra-implementation) | [Lib](https://create-react-app.dev/)
 
 ## Contributing
 
