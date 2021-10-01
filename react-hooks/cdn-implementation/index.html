@@ -24,8 +24,13 @@
     <script>
       const e = React.createElement;
 
+      const makeArray = (length) => [...Array(length)];
+
+      const arrOfTen = makeArray(10);
+      const arrOfHundred = makeArray(100);
+
       const Digits = () => {
-        return [...Array(10)].map((_, i) =>
+        return arrOfTen.map((_, i) =>
           e(
             "div",
             {
@@ -42,7 +47,7 @@
       };
 
       const Ticks = () => {
-        return [...Array(100)].map((_, i) =>
+        return arrOfHundred.map((_, i) =>
           e("div", {
             key: i,
             className: i % 10 === 0 ? "large tick" : "tick",
@@ -111,8 +116,20 @@
       const DecimalClock = () => {
         const frameRequest = React.useRef(null);
         const [date, setDate] = React.useState(new Date());
-        const [fractionOfDay, setFractionOfDay] = React.useState(null);
-        const [timeString, setTimeString] = React.useState(null);
+        const timeOfDay =
+          (date.getHours() * 3600 +
+            date.getMinutes() * 60 +
+            date.getSeconds()) *
+            1000 +
+          date.getMilliseconds();
+        const fractionOfDay = timeOfDay / 86400_000;
+        const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
+          (fractionOfDay * 1_000) % 100
+        )
+          .toString()
+          .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
+          .toString()
+          .padStart(2, "0")}`;
 
         const update = () => {
           setDate(new Date());
@@ -127,28 +144,6 @@
           };
           // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
-
-        React.useEffect(() => {
-          const timeOfDay =
-            (date.getHours() * 3600 +
-              date.getMinutes() * 60 +
-              date.getSeconds()) *
-              1000 +
-            date.getMilliseconds();
-          setFractionOfDay(timeOfDay / 86400_000);
-        }, [date]);
-
-        React.useEffect(() => {
-          setTimeString(
-            `${Math.floor(fractionOfDay * 10)}:${Math.floor(
-              (fractionOfDay * 1_000) % 100
-            )
-              .toString()
-              .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
-              .toString()
-              .padStart(2, "0")}`
-          );
-        }, [fractionOfDay]);
 
         return e(
           React.Fragment,

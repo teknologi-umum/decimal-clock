@@ -2,11 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+const makeArray = (length) => [...Array(length)];
+
+const arrOfTen = makeArray(10);
+const arrOfHundred = makeArray(100);
+
 const DecimalClock = () => {
   const frameRequest = useRef(null);
   const [date, setDate] = useState(new Date());
-  const [fractionOfDay, setFractionOfDay] = useState(null);
-  const [timeString, setTimeString] = useState(null);
+  const timeOfDay =
+    (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds()) *
+      1000 +
+    date.getMilliseconds();
+  const fractionOfDay = timeOfDay / 86400_000;
+  const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
+    (fractionOfDay * 1_000) % 100
+  )
+    .toString()
+    .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
+    .toString()
+    .padStart(2, "0")}`;
 
   const update = () => {
     setDate(new Date());
@@ -22,31 +37,11 @@ const DecimalClock = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const timeOfDay =
-      (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds()) *
-        1000 +
-      date.getMilliseconds();
-    setFractionOfDay(timeOfDay / 86400_000);
-  }, [date]);
-
-  useEffect(() => {
-    setTimeString(
-      `${Math.floor(fractionOfDay * 10)}:${Math.floor(
-        (fractionOfDay * 1_000) % 100
-      )
-        .toString()
-        .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
-        .toString()
-        .padStart(2, "0")}`
-    );
-  }, [fractionOfDay]);
-
   return (
     <>
       <h2>Decimal Clock</h2>
       <div id="clock-face">
-        {[...Array(10)].map((_, i) => (
+        {arrOfTen.map((_, i) => (
           <div
             key={i}
             className="digit"
@@ -59,7 +54,7 @@ const DecimalClock = () => {
           </div>
         ))}
 
-        {[...Array(100)].map((_, i) => (
+        {arrOfHundred.map((_, i) => (
           <div
             key={i}
             className={i % 10 === 0 ? "large tick" : "tick"}
