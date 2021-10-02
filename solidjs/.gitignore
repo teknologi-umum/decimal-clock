@@ -1,2 +1,2 @@
 node_modules
-dist
+# Dist is not ignored as it is required to submit.
