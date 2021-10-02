@@ -1,0 +1,9 @@
+{
+	"name": "SolidJs",
+	"srcs": [
+	  "dist/index.html",
+	  "src/index.tsx",
+	  "src/App.tsx"
+	],
+	"dist": "dist/index.html"
+  }
