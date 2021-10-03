@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyperapp: Decimal Clock</title>
+
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>Decimal Clock</h2>
+    <div id="root"></div>
+    <script type="module">
+      import { app } from "https://unpkg.com/hyperapp";
+      import {
+        main,
+        div,
+        h1,
+        text,
+      } from "https://unpkg.com/@hyperapp/html?module";
+
+      const digits = [...Array(10)].map((_, i) =>
+        div(
+          {
+            key: i,
+            class: "digit",
+            style: {
+              left: 50 - Math.sin((Math.PI * i) / 5) * 40 + "%",
+              top: 50 + Math.cos((Math.PI * i) / 5) * 40 + "%",
+            },
+          },
+          text(i)
+        )
+      );
+
+      const ticks = [...Array(100)].map((_, i) =>
+        div({
+          key: i,
+          className: i % 10 === 0 ? "large tick" : "tick",
+          style: {
+            transform: `rotate(${i * 3.6}deg)`,
+          },
+        })
+      );
+
+      const hands = (timeString, fractionOfDay) => {
+        return [
+          div({
+            id: "short-hand",
+            style: {
+              transform: `rotate(${fractionOfDay * 360 + 180}deg)`,
+            },
+          }),
+          div({
+            id: "long-hand",
+            style: {
+              transform: `rotate(${((fractionOfDay * 10) % 1) * 360 + 180}deg)`,
+            },
+          }),
+          div({
+            id: "second-hand",
+            style: {
+              transform: `rotate(${
+                ((fractionOfDay * 1000) % 1) * 360 + 180
+              }deg)`,
+            },
+          }),
+        ];
+      };
+
+      const UpdateDate = (dispatch) => {
+        const update = () => {
+          const date = new Date();
+          const timeOfDay =
+            (date.getHours() * 3600 +
+              date.getMinutes() * 60 +
+              date.getSeconds()) *
+              1000 +
+            date.getMilliseconds();
+
+          const fractionOfDay = timeOfDay / 86400_000;
+
+          const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
+            (fractionOfDay * 1_000) % 100
+          )
+            .toString()
+            .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
+            .toString()
+            .padStart(2, "0")}`;
+
+          dispatch((state) => ({
+            date: date,
+            timeString,
+            fractionOfDay,
+          }));
+
+          window.requestAnimationFrame(update);
+        };
+
+        window.requestAnimationFrame(update);
+      };
+
+      app({
+        init: [
+          { date: new Date(), timeString: "", fractionOfDay: "" },
+          [UpdateDate],
+        ],
+        view: ({ timeString, fractionOfDay }) =>
+          main({}, [
+            div({ id: "clock-face" }, [
+              ...digits,
+              ...ticks,
+              ...hands(timeString, fractionOfDay),
+            ]),
+            h1({ id: "clock-time" }, text(timeString)),
+          ]),
+        node: document.getElementById("root"),
+      });
+    </script>
+  </body>
+</html>
