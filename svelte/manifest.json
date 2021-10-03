@@ -1,0 +1,9 @@
+{
+  "name": "Svelte",
+  "srcs": [
+    "public/index.html", 
+    "src/index.js", 
+    "src/App.svelte"
+  ],
+  "dist": "public/index.html"
+}
