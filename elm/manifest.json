@@ -1,0 +1,8 @@
+{
+  "name": "Elm",
+  "srcs": [
+    "public/index.html",
+    "src/Main.elm"
+  ],
+  "dist": "dist/index.html"
+}
