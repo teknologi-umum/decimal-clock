@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "* {\n    font-family: sans-serif\n}\n\nh1,\nh2 {\n    text-align: center\n}\n\n#clock-face {\n    position: relative;\n    width: 70vh;\n    height: 70vh;\n    border: solid 2vh #888;\n    border-radius: 37vh;\n    margin: 0 auto\n}\n\n#clock-face:before {\n    content: 'TEKNUM';\n    display: block;\n    position: absolute;\n    font-size: 2.5vh;\n    color: #bbb;\n    font-weight: 500;\n    letter-spacing: .3vh;\n    text-align: center;\n    width: 100%;\n    top: 28%\n}\n\n#clock-face:after {\n    content: '';\n    display: block;\n    position: absolute;\n    width: 4%;\n    height: 4%;\n    left: 50%;\n    top: 50%;\n    margin: -2% 0 0 -2%;\n    background: #000;\n    border-radius: 50%\n}\n\n.digit {\n    position: absolute;\n    font-size: 6vh;\n    height: 7vh;\n    width: 7vh;\n    margin-left: -3.5vh;\n    margin-top: -3.5vh;\n    text-align: center;\n    user-select: none\n}\n\n.tick {\n    position: absolute;\n    width: .3%;\n    left: 50%;\n    margin-left: -.15%;\n    background: #888;\n    height: 2%;\n    transform-origin: 50% 2500%\n}\n\n.large.tick {\n    height: 4%;\n    transform-origin: 50% 1250%\n}\n\n#short-hand {\n    position: absolute;\n    width: 1%;\n    left: 50%;\n    top: 27%;\n    margin-left: -.5%;\n    background: #000;\n    height: 23%;\n    transform-origin: 50% 100%\n}\n\n#long-hand {\n    position: absolute;\n    width: 1%;\n    left: 50%;\n    top: 20%;\n    margin-left: -.5%;\n    background: #000;\n    height: 30%;\n    transform-origin: 50% 100%\n}\n\n#second-hand {\n    position: absolute;\n    width: .3%;\n    left: 50%;\n    top: 18%;\n    margin-left: -.15%;\n    background: #000;\n    height: 32%;\n    transform-origin: 50% 100%\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

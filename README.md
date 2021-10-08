@@ -11,6 +11,7 @@ From Wikipedia:
 In this repository we maintain multiple implementations of Decimal Clock using various bleeding edge frontend framework.
 
 - alpine: [Demo](https://teknologi-umum.github.io/decimal-clock/alpine) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/alpine) | [Lib](https://alpinejs.dev/)
+- elm: [Demo](https://teknologi-umum.github.io/decimal-clock/elm/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/elm) | [Lib](https://elm-lang.org/)
 - hyperapp: [Demo](https://teknologi-umum.github.io/decimal-clock/hyperapp) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/hyperapp) | [Lib](https://github.com/jorgebucaran/hyperapp)
 - jquery: [Demo](https://teknologi-umum.github.io/decimal-clock/jquery) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/jquery) | [Lib](https://jquery.com/)
 - petite-vue: [Demo](https://teknologi-umum.github.io/decimal-clock/petite-vue) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/petite-vue) | [Lib](https://github.com/vuejs/petite-vue)
