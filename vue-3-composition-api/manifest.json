@@ -1,0 +1,5 @@
+{
+  "name": "Vue 3 Composition API",
+  "srcs": ["src/main.js", "src/App.vue"],
+  "dist": "dist/index.html"
+}
