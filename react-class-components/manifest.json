@@ -1,0 +1,5 @@
+{
+  "name": "react-class-components",
+  "srcs": ["dist/index.html", "src/index.js"],
+  "dist": "dist/index.html"
+}
