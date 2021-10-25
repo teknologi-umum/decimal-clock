@@ -6,7 +6,12 @@ h1,
 h2 {
     text-align: center
 }
-
+#clock-time{
+    bottom: -14vh;
+    position: absolute;
+    left: 27vh;
+    text-align: center;
+}
 #clock-face {
     position: relative;
     width: 70vh;
