@@ -1,0 +1,9 @@
+{
+	"name": "Vue 3",
+	"srcs": [
+	  "dist/index.html",
+	  "src/main.ts",
+	  "src/App.vue"
+	],
+	"dist": "dist/index.html"
+  }
