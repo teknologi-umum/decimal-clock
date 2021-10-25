@@ -1,24 +1,26 @@
 * {
-    font-family: sans-serif
+    font-family: sans-serif;
 }
 
 h1,
 h2 {
-    text-align: center
+    text-align: center;
 }
+
 #clock-time{
     bottom: -14vh;
     position: absolute;
     left: 27vh;
     text-align: center;
 }
+
 #clock-face {
     position: relative;
     width: 70vh;
     height: 70vh;
     border: solid 2vh #888;
     border-radius: 37vh;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 #clock-face:before {
@@ -31,7 +33,7 @@ h2 {
     letter-spacing: .3vh;
     text-align: center;
     width: 100%;
-    top: 28%
+    top: 28%;
 }
 
 #clock-face:after {
@@ -55,7 +57,7 @@ h2 {
     margin-left: -3.5vh;
     margin-top: -3.5vh;
     text-align: center;
-    user-select: none
+    user-select: none;
 }
 
 .tick {
@@ -65,12 +67,12 @@ h2 {
     margin-left: -.15%;
     background: #888;
     height: 2%;
-    transform-origin: 50% 2500%
+    transform-origin: 50% 2500%;
 }
 
 .large.tick {
     height: 4%;
-    transform-origin: 50% 1250%
+    transform-origin: 50% 1250%;
 }
 
 #short-hand {
@@ -81,7 +83,7 @@ h2 {
     margin-left: -.5%;
     background: #000;
     height: 23%;
-    transform-origin: 50% 100%
+    transform-origin: 50% 100%;
 }
 
 #long-hand {
@@ -92,7 +94,7 @@ h2 {
     margin-left: -.5%;
     background: #000;
     height: 30%;
-    transform-origin: 50% 100%
+    transform-origin: 50% 100%;
 }
 
 #second-hand {
@@ -103,5 +105,5 @@ h2 {
     margin-left: -.15%;
     background: #000;
     height: 32%;
-    transform-origin: 50% 100%
+    transform-origin: 50% 100%;
 }
