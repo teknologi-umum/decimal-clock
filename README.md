@@ -10,17 +10,22 @@ From Wikipedia:
 
 In this repository we maintain multiple implementations of Decimal Clock using various bleeding edge frontend framework.
 
-- alpine: [Demo](https://teknologi-umum.github.io/decimal-clock/alpine) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/alpine) | [Lib](https://alpinejs.dev/)
-- elm: [Demo](https://teknologi-umum.github.io/decimal-clock/elm/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/elm) | [Lib](https://elm-lang.org/)
-- hyperapp: [Demo](https://teknologi-umum.github.io/decimal-clock/hyperapp) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/hyperapp) | [Lib](https://github.com/jorgebucaran/hyperapp)
-- jquery: [Demo](https://teknologi-umum.github.io/decimal-clock/jquery) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/jquery) | [Lib](https://jquery.com/)
-- petite-vue: [Demo](https://teknologi-umum.github.io/decimal-clock/petite-vue) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/petite-vue) | [Lib](https://github.com/vuejs/petite-vue)
-- react-hooks (via CDN): [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cdn-implementation) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cdn-implementation) | [Lib](https://reactjs.org/)
-- react-hooks (via create-react-app): [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cra-implementation/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cra-implementation) | [Lib](https://create-react-app.dev/)
-- scarlets-frame: [Demo](https://teknologi-umum.github.io/decimal-clock/scarlets-frame) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/scarlets-frame) | [Lib](https://github.com/ScarletsFiction/ScarletsFrame)
-- solidjs [Demo](https://teknologi-umum.github.io/decimal-clock/solidjs/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/solidjs) | [Lib](https://www.solidjs.com/)
-- svelte [Demo](https://teknologi-umum.github.io/decimal-clock/svelte/public) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/svelte) | [Lib](https://svelte.dev/)
-- vanilla: [Demo](https://teknologi-umum.github.io/decimal-clock/vanilla) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vanilla)
+| Implementation | Demo | Source | Lib |
+|----------------|------|--------|-----|
+| alpine | [Demo](https://teknologi-umum.github.io/decimal-clock/alpine) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/alpine) | [Lib](https://alpinejs.dev/) |
+| elm | [Demo](https://teknologi-umum.github.io/decimal-clock/elm/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/elm) | [Lib](https://elm-lang.org/) |
+| hyperapp | [Demo](https://teknologi-umum.github.io/decimal-clock/hyperapp) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/hyperapp) | [Lib](https://github.com/jorgebucaran/hyperapp) |
+| jquery | [Demo](https://teknologi-umum.github.io/decimal-clock/jquery) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/jquery) | [Lib](https://jquery.com/) |
+| petite-vue | [Demo](https://teknologi-umum.github.io/decimal-clock/petite-vue) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/petite-vue) | [Lib](https://github.com/vuejs/petite-vue) |
+| react-hooks (via CDN) | [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cdn-implementation) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cdn-implementation) | [Lib](https://reactjs.org/) |
+| react-hooks (via create-react-app) | [Demo](https://teknologi-umum.github.io/decimal-clock/react-hooks/cra-implementation/build/) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/react-hooks/cra-implementation) | [Lib](https://create-react-app.dev/) |
+| scarlets-frame | [Demo](https://teknologi-umum.github.io/decimal-clock/scarlets-frame) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/scarlets-frame) | [Lib](https://github.com/ScarletsFiction/ScarletsFrame) |
+| solidjs | [Demo](https://teknologi-umum.github.io/decimal-clock/solidjs/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/solidjs) | [Lib](https://www.solidjs.com/) |
+| svelte | [Demo](https://teknologi-umum.github.io/decimal-clock/svelte/public) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/svelte) | [Lib](https://svelte.dev/) |
+| vanilla | [Demo](https://teknologi-umum.github.io/decimal-clock/vanilla) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vanilla) |
+| vue-3-composition-api (via vue cli) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-3-composition-api/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-3-composition-api) | [Lib](https://vuejs.org/) |
+| vue-setup (with vite and typescript) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-setup/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-setup) | [Lib](https://vuejs.org/) |
+| web-component | [Demo](https://teknologi-umum.github.io/decimal-clock/web-component) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/web-component) |
 
 ## Contributing
 
