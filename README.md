@@ -2,7 +2,7 @@
 
 ![clock.svg](https://teknum-bot.fly.dev/decimalclock/svg?nocache=1)
 
-From Wikipedia:
+From [Wikipedia](https://en.wikipedia.org/wiki/Decimal_time):
 
 >Decimal time is the representation of the time of day using units which are decimally related. This term is often used specifically to refer to the time system used in France for a few years beginning in 1792 during the French Revolution, which divided the day into 10 decimal hours, each decimal hour into 100 decimal minutes and each decimal minute into 100 decimal seconds (100000 decimal seconds per day), as opposed to the more familiar UTC time standard, which divides the day into 24 hours, each hour into 60 minutes and each minute into 60 seconds (86400 SI seconds per day).
 
@@ -23,8 +23,8 @@ In this repository we maintain multiple implementations of Decimal Clock using v
 | solidjs | [Demo](https://teknologi-umum.github.io/decimal-clock/solidjs/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/solidjs) | [Lib](https://www.solidjs.com/) |
 | svelte | [Demo](https://teknologi-umum.github.io/decimal-clock/svelte/public) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/svelte) | [Lib](https://svelte.dev/) |
 | vanilla | [Demo](https://teknologi-umum.github.io/decimal-clock/vanilla) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vanilla) |
-| vue-3-composition-api (via vue cli) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-3-composition-api/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-3-composition-api) | [Lib](https://vuejs.org/) |
-| vue-setup (with vite and typescript) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-setup/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-setup) | [Lib](https://vuejs.org/) |
+| vue-3-composition-api (via vue cli) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-3-composition-api/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-3-composition-api) | [Lib](https://v3.vuejs.org/) |
+| vue-setup (with vite and typescript) | [Demo](https://teknologi-umum.github.io/decimal-clock/vue-setup/dist) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/vue-setup) | [Lib](https://v3.vuejs.org/) |
 | web-component | [Demo](https://teknologi-umum.github.io/decimal-clock/web-component) | [Source](https://github.com/teknologi-umum/decimal-clock/tree/main/web-component) |
 
 ## Contributing
