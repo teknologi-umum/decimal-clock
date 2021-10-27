@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed, provide } from 'vue';
-import Tens from './components/Tens.vue';
-import Hundreds from './components/Hundreds.vue';
+import Digits from './components/Digits.vue';
+import Ticks from './components/Ticks.vue';
 
 provide('arrOfHundreds', [...Array(100)]);
 provide('arrOfTens', [...Array(10)]);
@@ -23,7 +23,6 @@ const timeString = computed<string>(() =>
   
 const frame = ref<number>(0);
 
-
 onMounted(() => {
   const update = (): void => {
     date.value = new Date();
@@ -40,8 +39,8 @@ onUnmounted(() => {
 <template>
   <h2>Decimal Clock</h2>
   <div id="clock-face">
-    <Tens />
-    <Hundreds />
+    <Digits />
+    <Ticks />
 
     <div v-show="timeString !== null">
       <div
@@ -105,32 +104,6 @@ h1, h2 {
   margin: -2% 0 0 -2%;
   background: #000;
   border-radius: 50%
-}
-
-.digit {
-  position: absolute;
-  font-size: 6vh;
-  height: 7vh;
-  width: 7vh;
-  margin-left: -3.5vh;
-  margin-top: -3.5vh;
-  text-align: center;
-  user-select: none
-}
-
-.tick{
-  position: absolute;
-  width: .3%;
-  left: 50%;
-  margin-left: -.15%;
-  background: #888;
-  height: 2%;
-  transform-origin: 50% 2500%
-}
-
-.large .tick {
-  height: 4%;
-  transform-origin: 50% 1250%
 }
 
 #short-hand { 

@@ -12,3 +12,20 @@ const hundreds = inject<number[]>('arrOfHundreds');
     :style="`transform: rotate(${i * 3.6}deg);`"
   />
 </template>
+
+<style scoped>
+.tick {
+  position: absolute;
+  width: .3%;
+  left: 50%;
+  margin-left: -.15%;
+  background: #888;
+  height: 2%;
+  transform-origin: 50% 2500%
+}
+
+.large .tick {
+  height: 4%;
+  transform-origin: 50% 1250%
+}
+</style>

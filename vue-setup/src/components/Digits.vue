@@ -13,3 +13,16 @@ const tens = inject<number[]>('arrOfTens');
     {{ i }}
   </div>
 </template>
+
+<style scoped>
+.digit {
+  position: absolute;
+  font-size: 6vh;
+  height: 7vh;
+  width: 7vh;
+  margin-left: -3.5vh;
+  margin-top: -3.5vh;
+  text-align: center;
+  user-select: none
+}
+</style>
