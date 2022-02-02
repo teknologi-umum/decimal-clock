@@ -1,0 +1,14 @@
+{
+  "name": "vite-starter",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "malinajs": "^0.6.52",
+    "malinajs-unplugin": "^0.0.18",
+    "vite": "^2.7.2"
+  }
+}
