@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                  
+    "module": "commonjs",                                
+    "baseUrl": "./src",                                  
+    "paths": {
+      "core": ["core"]
+    },                                      
+    // "outFile": "./",                                  
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,            
+    "strict": true,                                      
+    "noImplicitAny": true,                            
+  }
+}
