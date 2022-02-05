@@ -1,3 +1,7 @@
+import { ClockHandType } from 'views/clock/hand'
+
+import { BASE, HOURS } from 'core/constants';
+
 const zeroPosition = Math.PI / 2 // so '0' is at the bottom of the clockface
 const fullCircle = Math.PI * 2
 
@@ -43,3 +47,15 @@ export const canvasManager = function (ctx: CanvasRenderingContext2D) {
 
   return { setStyle, circleFromCenter, loopAround, stroke, fill };
 };
+
+export const getAngleFromTimeValue = (value, type: ClockHandType) => {
+  let maxValue
+
+  if(['minute', 'second'].includes(type)) {
+    maxValue = BASE
+  } else {
+    maxValue = HOURS
+  }
+
+  return value / maxValue * 360
+}

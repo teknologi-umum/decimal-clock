@@ -8,6 +8,6 @@
     },
     "jsx": "react",
     "jsxFactory": "h",
-    "target": "es6"
+    "target": "ESNext"
   },
 }

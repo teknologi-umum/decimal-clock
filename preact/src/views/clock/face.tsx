@@ -1,16 +1,16 @@
-import { h } from "preact";
+import { h, ComponentChildren } from "preact";
 import { useEffect, useRef } from "preact/hooks";
 
-import { HOURS, RATIO } from "core/constants";
+import { HOURS, BASE } from "core/constants";
 import { canvasManager, fractionalArcLengthToXY } from "views/helpers";
 
-export const ClockFace = ({ size }: { size: number }) => {
+export const ClockFace = ({ children, size }: { children: ComponentChildren; size: number }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    const ctx = canvasRef.current.getContext('2d')
+    const ctx = canvasRef.current.getContext("2d");
 
     const center = size / 2;
     const radius = size / 2;
@@ -25,7 +25,7 @@ export const ClockFace = ({ size }: { size: number }) => {
     // draw lines to center
     canvasManager(ctx)
       .setStyle({ lineWidth: 1 })
-      .loopAround(RATIO, (ctx) => ctx.lineTo(center, center))
+      .loopAround(BASE, (ctx) => ctx.lineTo(center, center))
       .stroke();
 
     // cover with circle to create ticks
@@ -56,10 +56,15 @@ export const ClockFace = ({ size }: { size: number }) => {
     canvasManager(ctx)
       .setStyle({ font: `${size / 180}rem Arial`, fillStyle: "black" })
       .loopAround(HOURS, (ctx, i) => {
-        const { x, y } = fractionalArcLengthToXY(i / HOURS, center, radius * 3/4);
+        const { x, y } = fractionalArcLengthToXY(i / HOURS, center, (radius * 3) / 4)
         ctx.fillText(i.toString(), x, y);
       });
   }, [canvasRef.current]);
 
-  return <canvas ref={canvasRef} width={size} height={size}></canvas>;
+  return (
+    <div className="clock-container" style={{ width: size, height: size }}>
+      <canvas ref={canvasRef} width={size} height={size}></canvas>
+      {children}
+    </div>
+  );
 };

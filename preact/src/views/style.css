@@ -1,0 +1,23 @@
+.clock-container {
+  position: relative;
+}
+
+.clock-hand {
+  position: absolute;
+  background: linear-gradient(to bottom, black 50%, transparent 50%);
+  top: 50%;
+  left: 50%;
+}
+
+.clock-hand.second {
+  width: 2px;
+  height: 250px;
+}
+.clock-hand.minute {
+  width: 6px;
+  height: 200px;
+}
+.clock-hand.hour {
+  width: 8px;
+  height: 150px;
+}
