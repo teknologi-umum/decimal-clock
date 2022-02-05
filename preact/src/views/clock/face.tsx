@@ -20,40 +20,34 @@ export const ClockFace = ({ children, size }: { children: ComponentChildren; siz
       .setStyle({ lineWidth: 10, fillStyle: "white", strokeStyle: "grey" })
       .circleFromCenter(radius - 5 /* <- lineWidth / 2 */)
       .fill()
-      .stroke();
+      .stroke()
 
-    // draw lines to center
-    canvasManager(ctx)
+      // draw lines to center
       .setStyle({ lineWidth: 1 })
       .loopAround(BASE, (ctx) => ctx.lineTo(center, center))
-      .stroke();
+      .stroke()
 
-    // cover with circle to create ticks
-    canvasManager(ctx)
+      // cover with circle to create ticks
       .setStyle({ fillStyle: "white" })
       .circleFromCenter(radius * (7 / 8))
-      .fill();
+      .fill()
 
-    // same procecss but for draw larger ticks
-    canvasManager(ctx)
+      // same procecss but for draw larger ticks
       .setStyle({ lineWidth: 1 })
       .loopAround(HOURS, (ctx) => ctx.lineTo(center, center))
-      .stroke();
+      .stroke()
 
-    // cover again
-    canvasManager(ctx)
+      // cover again
       .setStyle({ fillStyle: "white" })
       .circleFromCenter(radius * (9 / 11))
-      .fill();
+      .fill()
 
-    // add circle dot at the center
-    canvasManager(ctx)
+      // add circle dot at the center
       .setStyle({ fillStyle: "black" })
       .circleFromCenter(radius * (1 / 25))
-      .fill();
+      .fill()
 
-    // draw numbers
-    canvasManager(ctx)
+      // draw numbers
       .setStyle({ font: `${size / 180}rem Arial`, fillStyle: "black" })
       .loopAround(HOURS, (ctx, i) => {
         const { x, y } = fractionalArcLengthToXY(i / HOURS, center, (radius * 3) / 4)

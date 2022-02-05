@@ -15,12 +15,12 @@ export const ClockHand = ({ type, initialValue = 0 }: ClockHandProps) => {
 
   useEffect(() => {
     if (!clockHandRef.current) return;
-    console.log(fullRotationDuration[type])
+
     clockHandRef.current.animate([
       { transform: `translate(-50%, -50%) rotate(${getAngleFromTimeValue(initialValue, type) + 180}deg)` },
       { transform: `translate(-50%, -50%) rotate(${getAngleFromTimeValue(initialValue, type) + 360 + 180}deg)` },
     ], {
-      duration: fullRotationDuration[type] * 1000,
+      duration: fullRotationDuration[type] * 1000, // miliseconds
       iterations: Infinity,
     });
   }, [clockHandRef.current]);
