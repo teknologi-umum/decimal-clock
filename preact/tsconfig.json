@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2016",                                  
-    "module": "commonjs",                                
-    "baseUrl": "./src",                                  
+    "baseUrl": "./src",
+    "module": "commonjs",
     "paths": {
-      "core": ["core"]
-    },                                      
-    // "outFile": "./",                                  
-    "esModuleInterop": true,                             
-    "forceConsistentCasingInFileNames": true,            
-    "strict": true,                                      
-    "noImplicitAny": true,                            
-  }
+      "core": ["core"],
+      "views": ["views"]
+    },
+    "jsx": "react",
+    "jsxFactory": "h",
+    "target": "es6"
+  },
 }
