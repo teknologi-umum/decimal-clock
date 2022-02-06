@@ -25,7 +25,7 @@ canvasManager(ctx)
   .circleFromCenter(radius * (7 / 8))
   .fill()
 
-  // same process but for draw larger ticks
+  // same process but for larger ticks
   .setStyle({ lineWidth: 1 })
   .loopAround(HOURS, (_) => _.lineToCenter())
   .stroke()
@@ -33,11 +33,6 @@ canvasManager(ctx)
   // cover again
   .setStyle({ fillStyle: "white" })
   .circleFromCenter(radius * (9 / 11))
-  .fill()
-
-  // add circle dot at the center
-  .setStyle({ fillStyle: "black" })
-  .circleFromCenter(radius * (1 / 25))
   .fill()
 
   // draw numbers
