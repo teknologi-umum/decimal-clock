@@ -16,46 +16,9 @@
   />
   <text x="200" y="120" text-anchor="middle">TEKNUM</text>
   <circle cx="200" cy="200" r="8" fill="black" />
-  <line
-      x1="200"
-      x2="200"
-      y1="200"
-      y2="70"
-      stroke="black"
-      stroke-width="2"
-      transform="rotate(100 200 200)"
-  >
-    <animateTransform
-      id="seconds"
-      attributeName="transform"
-      type="rotate"
-      repeatCount="indefinite"
-    />
-  </line>
-  <line
-    x1="200"
-    x2="200"
-    y1="200"
-    y2="130"
-    stroke="black"
-    stroke-width="4"
-    transform="rotate(180 200 200)"
-  >
-    <animateTransform
-      id="hours"
-      attributeName="transform"
-      type="rotate"
-      repeatCount="indefinite"
-    />
-  </line>
-  <line x1="200" x2="200" y1="200" y2="100" stroke="black" stroke-width="3">
-    <animateTransform
-      id="minutes"
-      attributeName="transform"
-      type="rotate"
-      repeatCount="indefinite"
-    />
-  </line>
+  <line id="seconds" x1="200" x2="200" y1="200" y2="70" stroke="black" stroke-width="1" />
+  <line id="minutes" x1="200" x2="200" y1="200" y2="100" stroke="black" stroke-width="3" />
+  <line id="hours" x1="200" x2="200" y1="200" y2="130" stroke="black" stroke-width="4" />
   <script>
     const BASE = 100;
     const HOURS = 10;
@@ -77,14 +40,20 @@
     const zeroPosition = Math.PI / 2;
     const fontSize = 30;
 
-    setupClock();
+    requestAnimationFrame(updateClock)
 
-    function setupClock() {
-      const values = getCentesimalClockValue();
+    function updateClock() {
+      const { hours, minutes, seconds} = getCentesimalClockValue();
+      
+      rotateHand('seconds', seconds)
+      rotateHand('minutes', minutes)
+      rotateHand('hours', hours)
 
-      ['seconds', 'minutes', 'hours'].forEach((id) => {
-        startRotate(id, values[id], durations[id]);
-      });
+      requestAnimationFrame(updateClock)
+    }
+
+    function rotateHand(selector, value) {
+      document.getElementById(selector).setAttribute('transform', `rotate(${value} ${center} ${center})`)
     }
 
     const clock = document.getElementById('clock');
@@ -122,15 +91,6 @@
         const { x, y } = fractionalArcLengthToXY(i / iterations, radius);
         callback(i, x, y);
       }
-    }
-
-    function startRotate(selectorId, initial, duration) {
-      const animation = document.getElementById(selectorId);
-      animation.setAttribute('from', `${initial} ${center} ${center}`);
-      animation.setAttribute('to', `${initial + 360} ${center} ${center}`);
-      animation.setAttribute('dur', duration);
-
-      animation.beginElement();
     }
 
     function fractionalArcLengthToXY(fraction, radius) {
