@@ -44,7 +44,7 @@ canvasManager(ctx)
 
 // drawing function
 function step() {
-  const { hours, minutes, seconds } = getCentesimalDate();
+  const { hours, minutes, seconds } = getCentesimalClockValue();
   canvasManager(ctx)
     // erase circle portion of previous frame
     .setStyle({ fillStyle: "white" })

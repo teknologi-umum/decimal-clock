@@ -8,7 +8,7 @@ const CENTESIMAL_SECONDS = HOURS * BASE * BASE;
 
 /* Setup clockface */
 
-let size = 500;
+const size = 500;
 const radius = size / 2;
 const center = size / 2;
 
@@ -85,7 +85,7 @@ function canvasManager(ctx) {
   };
 }
 
-function getCentesimalDate(date = new Date()) {
+function getCentesimalClockValue(date = new Date()) {
   const midnight = new Date(date).setHours(0, 0, 0, 0);
 
   const fractionOFToday = (new Date(date).getTime() - midnight) / SEXAGESIMAL_SECONDS / 1000;
