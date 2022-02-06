@@ -1,0 +1,14 @@
+export const HOURS = 10;
+
+export const BASE = 100;
+
+export const SEXAGESIMAL_SECONDS = 86400;
+export const CENTESIMAL_SECONDS = HOURS * BASE * BASE;
+
+const RATIO = CENTESIMAL_SECONDS / SEXAGESIMAL_SECONDS
+
+export enum PERSECOND {
+  SECOND = 1 * RATIO,
+  MINUTE = (1 * RATIO) / BASE,
+  HOUR = (1 * RATIO) / (BASE * BASE),
+}

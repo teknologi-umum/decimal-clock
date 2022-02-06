@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "module": "commonjs",
+    "paths": {
+      "core": ["core"],
+      "views": ["views"]
+    },
+    "jsx": "react",
+    "jsxFactory": "h",
+    "target": "ESNext"
+  },
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Preact with Typescript",
+    "srcs": [
+        "dist/index.html",
+        "dist/dist.min.js",
+        "dist/dist.min.css"
+    ],
+    "dist": "dist/index.html"
+}
