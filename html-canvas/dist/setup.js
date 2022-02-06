@@ -88,9 +88,9 @@ function canvasManager(ctx) {
 function getCentesimalClockValue(date = new Date()) {
   const midnight = new Date(date).setHours(0, 0, 0, 0);
 
-  const fractionOFToday = (new Date(date).getTime() - midnight) / SEXAGESIMAL_SECONDS / 1000;
+  const fractionOfToday = (new Date(date).getTime() - midnight) / SEXAGESIMAL_SECONDS / 1000;
 
-  const secondsNow = fractionOFToday * CENTESIMAL_SECONDS;
+  const secondsNow = fractionOfToday * CENTESIMAL_SECONDS;
 
   const hours = secondsNow / BASE ** 2;
   const minutes = (secondsNow - Math.floor(hours) * BASE ** 2) / BASE;
