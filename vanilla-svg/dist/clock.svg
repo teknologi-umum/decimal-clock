@@ -67,7 +67,7 @@
     const durations = {
       seconds: BASE / RATIO,
       minutes: BASE ** 2 / RATIO,
-      hours: BASE ** 2 / RATIO,
+      hours: BASE ** 3 / RATIO,
     };
 
     const size = 400;
