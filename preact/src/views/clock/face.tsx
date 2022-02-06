@@ -1,63 +1,22 @@
 import { h, ComponentChildren } from "preact";
-import { useEffect, useRef } from "preact/hooks";
+import { useContext } from "preact/hooks";
 
+import { Tick } from 'views/clock/tick'
+import { Label } from 'views/clock/label'
+
+import { SizeContext } from "views/clock";
 import { HOURS, BASE } from "core/constants";
-import { canvasManager, fractionalArcLengthToXY } from "views/helpers";
 
-export const ClockFace = ({ children, size }: { children: ComponentChildren; size: number }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const ctx = canvasRef.current.getContext("2d");
-
-    const center = size / 2;
-    const radius = size / 2;
-
-    // draw circle with grey border
-    canvasManager(ctx)
-      .setStyle({ lineWidth: 10, fillStyle: "white", strokeStyle: "grey" })
-      .circleFromCenter(radius - 5 /* <- lineWidth / 2 */)
-      .fill()
-      .stroke()
-
-      // draw lines to center
-      .setStyle({ lineWidth: 1 })
-      .loopAround(BASE, (ctx) => ctx.lineTo(center, center))
-      .stroke()
-
-      // cover with circle to create ticks
-      .setStyle({ fillStyle: "white" })
-      .circleFromCenter(radius * (7 / 8))
-      .fill()
-
-      // same procecss but for draw larger ticks
-      .setStyle({ lineWidth: 1 })
-      .loopAround(HOURS, (ctx) => ctx.lineTo(center, center))
-      .stroke()
-
-      // cover again
-      .setStyle({ fillStyle: "white" })
-      .circleFromCenter(radius * (9 / 11))
-      .fill()
-
-      // add circle dot at the center
-      .setStyle({ fillStyle: "black" })
-      .circleFromCenter(radius * (1 / 25))
-      .fill()
-
-      // draw numbers
-      .setStyle({ font: `${size / 180}rem Arial`, fillStyle: "black" })
-      .loopAround(HOURS, (ctx, i) => {
-        const { x, y } = fractionalArcLengthToXY(i / HOURS, center, (radius * 3) / 4)
-        ctx.fillText(i.toString(), x, y);
-      });
-  }, [canvasRef.current]);
-
+export const ClockFace = ({  children }: {  children: ComponentChildren }) => {
+  const size = useContext(SizeContext)
   return (
     <div className="clock-container" style={{ width: size, height: size }}>
-      <canvas ref={canvasRef} width={size} height={size}></canvas>
+      <div className="clock-face">
+        <span className="logo">TEKNUM</span>
+        <div className="center-point" />
+        {[...Array(BASE)].map((_, i) => <Tick key={i} index={i} />)}
+        {[...Array(HOURS)].map((_, i) => <Label key={i} index={i} />)}
+      </div>
       {children}
     </div>
   );

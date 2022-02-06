@@ -1,6 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+}
+
+/* CLOCK FACE */
 .clock-container {
   position: relative;
+  margin: 0 auto;
 }
+
+.clock-face {
+  background: white;
+  border: 10px solid grey;
+  border-radius: 50%;
+
+  height: 100%;
+  width: 100%;
+}
+
+.center-point {
+  background: black;
+  border-radius: 50%;
+
+  height: 20px;
+  width: 20px;
+
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tick {
+  background: grey;
+
+  width: 2px;
+
+  position: absolute;
+  transform-origin: top;
+}
+
+.hour-number {
+  color: black;
+  font-size: 2.5rem;
+  position: absolute;
+}
+
+/* CLOCK HANDS */
 
 .clock-hand {
   position: absolute;
@@ -11,13 +60,23 @@
 
 .clock-hand.second {
   width: 2px;
-  height: 250px;
+  height: 70%;
 }
 .clock-hand.minute {
   width: 6px;
-  height: 200px;
+  height: 60%;
 }
 .clock-hand.hour {
   width: 8px;
-  height: 150px;
+  height: 50%;
+}
+
+/* LOGO */
+.logo {
+  color: gray;
+
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 100px);
+  transform: translate(-50%, -50%);
 }

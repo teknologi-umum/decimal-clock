@@ -8,8 +8,8 @@ const fullCircle = Math.PI * 2
 export const fractionalArcLengthToXY = (fraction: number, center: number, radius: number
 ): { x: number; y: number } => {
   return {
-    x: center - 15 + radius * Math.cos(zeroPosition + fraction * fullCircle),
-    y: center + 15 + radius * Math.sin(zeroPosition + fraction * fullCircle),
+    x: center + radius * Math.cos(zeroPosition + fraction * fullCircle),
+    y: center + radius * Math.sin(zeroPosition + fraction * fullCircle),
   };
 };
 
