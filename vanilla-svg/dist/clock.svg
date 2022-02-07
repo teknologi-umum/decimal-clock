@@ -1,0 +1,123 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  id="clock"
+  height="400"
+  width="400"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <circle
+    cx="200"
+    cy="200"
+    r="192"
+    stroke="grey"
+    stroke-width="16"
+    fill="white"
+  />
+  <text x="200" y="120" text-anchor="middle">TEKNUM</text>
+  <circle cx="200" cy="200" r="8" fill="black" />
+  <line id="seconds" x1="200" x2="200" y1="200" y2="70" stroke="black" stroke-width="1" />
+  <line id="minutes" x1="200" x2="200" y1="200" y2="100" stroke="black" stroke-width="3" />
+  <line id="hours" x1="200" x2="200" y1="200" y2="130" stroke="black" stroke-width="4" />
+  <script>
+    const BASE = 100;
+    const HOURS = 10;
+    const SEXAGESIMAL_SECONDS = 86400;
+    const CENTESIMAL_SECONDS = 100000;
+
+    const RATIO = CENTESIMAL_SECONDS / SEXAGESIMAL_SECONDS;
+
+    const durations = {
+      seconds: BASE / RATIO,
+      minutes: BASE ** 2 / RATIO,
+      hours: BASE ** 3 / RATIO,
+    };
+
+    const size = 400;
+    const radius = size / 2;
+    const center = size / 2;
+    const fullCircle = Math.PI * 2;
+    const zeroPosition = Math.PI / 2;
+    const fontSize = 30;
+
+    requestAnimationFrame(updateClock)
+
+    function updateClock() {
+      const { hours, minutes, seconds} = getCentesimalClockValue();
+      
+      rotateHand('seconds', seconds)
+      rotateHand('minutes', minutes)
+      rotateHand('hours', hours)
+
+      requestAnimationFrame(updateClock)
+    }
+
+    function rotateHand(selector, value) {
+      document.getElementById(selector).setAttribute('transform', `rotate(${value} ${center} ${center})`)
+    }
+
+    const clock = document.getElementById('clock');
+
+    loopAroundCenter(BASE, 184, (i, x, y) => {
+      const tick = createSVGElement('line');
+      const isLargeTick = i % (BASE / HOURS) === 0;
+
+      tick.setAttribute('x1', x);
+      tick.setAttribute('y1', y);
+      tick.setAttribute('x2', x);
+      tick.setAttribute('y2', y + (isLargeTick ? 20 : 10));
+      tick.setAttribute('stroke', 'black');
+      tick.setAttribute('transform', `rotate(${180 + (360 * i) / BASE} ${x} ${y})`);
+
+      clock.append(tick);
+    });
+
+    loopAroundCenter(HOURS, 150, (i, x, y) => {
+      const label = createSVGElement('text');
+      label.textContent = `${i}`;
+      label.setAttribute('x', x - 8); // just estimation
+      label.setAttribute('y', y + 12); // just estimation
+      label.setAttribute('font-size', `${fontSize}px`);
+
+      clock.append(label);
+    });
+
+    function createSVGElement(type) {
+      return document.createElementNS('http://www.w3.org/2000/svg', type);
+    }
+
+    function loopAroundCenter(iterations, radius, callback) {
+      for (let i = 0; i &lt; iterations; i++) {
+        const { x, y } = fractionalArcLengthToXY(i / iterations, radius);
+        callback(i, x, y);
+      }
+    }
+
+    function fractionalArcLengthToXY(fraction, radius) {
+      return {
+        x: center + radius * Math.cos(zeroPosition + fraction * fullCircle),
+        y: center + radius * Math.sin(zeroPosition + fraction * fullCircle),
+      };
+    }
+
+    function getCentesimalClockValue(date = new Date()) {
+      const midnight = new Date(date).setHours(0, 0, 0, 0);
+
+      const fractionOFToday =
+      (new Date(date).getTime() - midnight) / SEXAGESIMAL_SECONDS / 1000;
+
+      const secondsNow = fractionOFToday * CENTESIMAL_SECONDS;
+
+      const hours = secondsNow / BASE ** 2;
+      const minutes = (secondsNow - Math.floor(hours) * BASE ** 2) / BASE;
+      const seconds =
+      secondsNow - Math.floor(hours) * BASE ** 2 - Math.floor(minutes) * BASE;
+
+      return {
+        hours: (hours / HOURS) * 360 + 180,
+        minutes: (minutes / BASE) * 360 + 180,
+        seconds: (seconds / BASE) * 360 + 180,
+      };
+    }
+  </script>
+</svg>

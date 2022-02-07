@@ -1,0 +1,8 @@
+{
+  "name": "Vanilla SVG",
+  "srcs": [
+    "dist/index.html",
+    "dist/clock.svg"
+  ],
+  "dist": "dist/index.html"
+}
