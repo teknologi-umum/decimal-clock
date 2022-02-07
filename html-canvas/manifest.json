@@ -1,0 +1,6 @@
+{
+    "name": "HTML Canvas",
+    "srcs": ["dist/index.html"],
+    "dist": "dist/index.html"
+  }
+  
