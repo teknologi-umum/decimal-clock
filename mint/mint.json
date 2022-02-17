@@ -1,0 +1,16 @@
+{
+  "name": "decimal-clock",
+  "application": {
+    "head": "assets/head.html",
+    "title": "Decimal Clock",
+    "icon": "assets/favicon.png"
+  },
+  "external": {
+    "stylesheets": [
+      "assets/style.css"
+    ]
+  },
+  "source-directories": [
+    "source"
+  ]
+}
