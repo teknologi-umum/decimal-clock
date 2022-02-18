@@ -14,14 +14,12 @@ fun main() {
 
     // prepare clock digit
     IntRange(0, 9)
-        .map { toDigitPosition(it.toDouble()) }
-        .map { toDigitElement(it) }
+        .map { it.toDigitPosition().toDigitElement() }
         .forEach { clockFace.appendChild(it) }
 
     // prepare clock tick
     IntRange(0, 99)
-        .map { toTickProperty(it) }
-        .map { toTickElement(it) }
+        .map { it.toTickProperty().toTickElement() }
         .forEach { clockFace.appendChild(it) }
 
     window.requestAnimationFrame { render(clockFace, clockTime) }
@@ -41,15 +39,16 @@ fun render(clockFace: HTMLDivElement, clockTime: HTMLHeadingElement) {
     window.requestAnimationFrame { render(clockFace, clockTime) }
 }
 
-fun toDigitPosition(i: Double): Triple<Double, Double, Double> {
-    val x = 50 - sin((PI * i) / 5) * 40
-    val y = 50 + cos((PI * i) / 5) * 40
+data class DigitPosition(val i: Int, val x: Double, val y: Double)
 
-    return Triple(i, x, y)
-}
+fun Int.toDigitPosition() = DigitPosition(
+    i = this,
+    x = 50 - sin((PI * this) / 5) * 40,
+    y = 50 + cos((PI * this) / 5) * 40
+)
 
-fun toDigitElement(p: Triple<Double, Double, Double>): HTMLDivElement {
-    val (i, x, y) = p
+fun DigitPosition.toDigitElement(): HTMLDivElement {
+    val (i, x, y) = this
 
     val digit = document.createElement("div") as HTMLDivElement
     digit.innerText = i.toString()
@@ -60,15 +59,15 @@ fun toDigitElement(p: Triple<Double, Double, Double>): HTMLDivElement {
     return digit
 }
 
-fun toTickProperty(i: Int): Pair<String, String> {
-    val className = if (i % 10 == 0) "large tick" else "tick"
-    val transform = "rotate(${i * 3.6}deg)"
+data class TickProperty(val className: String, val transform: String)
 
-    return Pair(className, transform)
-}
+fun Int.toTickProperty() = TickProperty(
+    className = if (this % 10 == 0) "large tick" else "tick",
+    transform = "rotate(${this * 3.6}deg)"
+)
 
-fun toTickElement(prop: Pair<String, String>): HTMLDivElement {
-    val (className, transform) = prop
+fun TickProperty.toTickElement(): HTMLDivElement {
+    val (className, transform) = this
     val tick = document.createElement("div") as HTMLDivElement
     tick.className = className
     tick.style.transform = transform
@@ -77,7 +76,7 @@ fun toTickElement(prop: Pair<String, String>): HTMLDivElement {
 
 fun renderFace(clockFace: HTMLDivElement, fractionOfDay: Double) {
     var short = document.getElementById("short-hand") as HTMLDivElement?
-    if (short === null) {
+    if (short == null) {
         short = document.createElement("div") as HTMLDivElement
         short.id = "short-hand"
         clockFace.appendChild(short)
@@ -85,7 +84,7 @@ fun renderFace(clockFace: HTMLDivElement, fractionOfDay: Double) {
     short.style.transform = "rotate(${fractionOfDay * 360 + 180}deg)"
 
     var long = document.getElementById("long-hand") as HTMLDivElement?
-    if (long === null) {
+    if (long == null) {
         long = document.createElement("div") as HTMLDivElement
         long.id = "long-hand"
         clockFace.appendChild(long)
@@ -93,7 +92,7 @@ fun renderFace(clockFace: HTMLDivElement, fractionOfDay: Double) {
     long.style.transform = "rotate(${((fractionOfDay * 10) % 1) * 360 + 180}deg)"
 
     var second = document.getElementById("second-hand") as HTMLDivElement?
-    if (second === null) {
+    if (second == null) {
         second = document.createElement("div") as HTMLDivElement
         second.id = "second-hand"
         clockFace.appendChild(second)
