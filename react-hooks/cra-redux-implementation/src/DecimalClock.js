@@ -12,6 +12,7 @@ const DecimalClock = () => {
   const [date, setDate] = useState(new Date());
   dispatch(setTimeOfDay(date))
   const timeOfDay = useSelector((state) => state.decimal.timeofday)
+  // console.log('decimal clock file', timeOfDay)
   const fractionOfDay = timeOfDay / 86400_000;
   const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
       (fractionOfDay * 1_000) % 100

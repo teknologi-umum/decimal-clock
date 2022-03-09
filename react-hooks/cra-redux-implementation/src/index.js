@@ -5,10 +5,10 @@ import DecimalClock from "./DecimalClock";
 import { createStore } from 'redux'
 import rootReducer from './reducer'
 import { setTimeOfDay } from "./reducer";
-import { Provider, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 function UpdateTimeOfDay() {
-  const timeOfDay = useSelector((state) => state.decimal.timeOfDay)
+  const timeOfDay = new Date()
   store.dispatch(setTimeOfDay(timeOfDay));
   requestAnimationFrame(UpdateTimeOfDay);
 }
