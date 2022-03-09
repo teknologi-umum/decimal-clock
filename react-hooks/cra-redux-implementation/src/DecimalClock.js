@@ -1,18 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setTimeOfDay } from "./reducer";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const makeArray = (length) => [...Array(length)];
 
 const arrOfTen = makeArray(10);
 const arrOfHundred = makeArray(100);
 const DecimalClock = () => {
-  const dispatch = useDispatch()
-  const frameRequest = useRef(null);
-  const [date, setDate] = useState(new Date());
-  dispatch(setTimeOfDay(date))
   const timeOfDay = useSelector((state) => state.decimal.timeofday)
-  // console.log('decimal clock file', timeOfDay)
   const fractionOfDay = timeOfDay / 86400_000;
   const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
       (fractionOfDay * 1_000) % 100
@@ -22,19 +16,6 @@ const DecimalClock = () => {
       .toString()
       .padStart(2, "0")}`;
 
-  const update = () => {
-    setDate(new Date());
-    frameRequest.current = requestAnimationFrame(update);
-  };
-
-  useEffect(() => {
-    frameRequest.current = requestAnimationFrame(update);
-
-    return () => {
-      cancelAnimationFrame(frameRequest.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
