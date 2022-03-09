@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTimeOfDay, setFractionOfDay, setTimeString, setRequestAnimationFrame } from "./reducer";
+import { setTimeOfDay } from "./reducer";
 
 const makeArray = (length) => [...Array(length)];
 
@@ -12,18 +12,22 @@ const DecimalClock = () => {
   const [date, setDate] = useState(new Date());
   dispatch(setTimeOfDay(date))
   const timeOfDay = useSelector((state) => state.decimal.timeofday)
-  dispatch(setFractionOfDay(timeOfDay))
-  const fractionOfDay = useSelector((state) => state.decimal.fractionofday)
-  dispatch(setTimeString(fractionOfDay))
-  const timeString = useSelector((state) => state.decimal.timestring)
+  const fractionOfDay = timeOfDay / 86400_000;
+  const timeString = `${Math.floor(fractionOfDay * 10)}:${Math.floor(
+      (fractionOfDay * 1_000) % 100
+    )
+      .toString()
+      .padStart(2, "0")}:${Math.floor((fractionOfDay * 100_000) % 100)
+      .toString()
+      .padStart(2, "0")}`;
 
   const update = () => {
     setDate(new Date());
-    frameRequest.current = dispatch(setRequestAnimationFrame(update));
+    frameRequest.current = requestAnimationFrame(update);
   };
 
   useEffect(() => {
-    frameRequest.current = dispatch(setRequestAnimationFrame(update));
+    frameRequest.current = requestAnimationFrame(update);
 
     return () => {
       cancelAnimationFrame(frameRequest.current);
