@@ -27,39 +27,36 @@
 
 <h1>Decimal Clock</h1>
 <div id="clock-face">
-  {#each Array(10) as _, i}
+  {#each 10 as _, i}
     <div
-      key={i}
       class="digit"
-      style="
-        left: {50 - Math.sin((Math.PI * i) / 5) * 40 + '%'}; 
-        top: {50 + Math.cos((Math.PI * i) / 5) * 40 + '%'}"
+      style:left={50 - Math.sin((Math.PI * i) / 5) * 40 + '%'}
+      style:top={50 + Math.cos((Math.PI * i) / 5) * 40 + '%'}
     >
       {i}
     </div>
   {/each}
 
-  {#each Array(100) as _, i}
+  {#each 100 as _, i}
     <div
-      key={i}
       class={i % 10 === 0 ? "large tick" : "tick"}
-      style="transform: rotate({i * 3.6}deg)"
+      style:transform="rotate({i * 3.6}deg)"
     />
   {/each}
 
   <div
     id="short-hand"
-    style="transform: rotate({fractionOfDay * 360 + 180}deg)"
+    style:transform="rotate({fractionOfDay * 360 + 180}deg)"
   />
 
   <div
     id="long-hand"
-    style="transform: rotate({((fractionOfDay * 10) % 1) * 360 + 180}deg)"
+    style:transform="rotate({((fractionOfDay * 10) % 1) * 360 + 180}deg)"
   />
 
   <div
     id="second-hand"
-    style="transform: rotate({((fractionOfDay * 1000) % 1) * 360 + 180}deg)"
+    style:transform="rotate({((fractionOfDay * 1000) % 1) * 360 + 180}deg)"
   />
 </div>
 <h1 id="clock-time">{timeString}</h1>
