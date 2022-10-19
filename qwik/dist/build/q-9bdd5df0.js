@@ -1,0 +1,1 @@
+import{X as t,b as e}from"./q-6b1196de.js";const o=()=>{const s=[...Array(100).keys()];return t(e,{children:s.map(r=>t("div",{class:r%10===0?"large tick":"tick",style:{transform:`rotate(${r*3.6}deg)`}}))})};export{o as s_XJhEil5JeT8};

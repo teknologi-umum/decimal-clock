@@ -1,0 +1,1 @@
+import{PContext as t}from"./q-2bf06ec5.js";import{R as r,X as f}from"./q-6b1196de.js";const i=()=>{const o=r(t);return f("h1",{id:"clock-time",children:[Math.floor(o.fractionOfDay*10),":",Math.floor((o.fractionOfDay*10-Math.floor(o.fractionOfDay*10))*100),":",Math.floor(o.fractionOfDay*1e5%100)]})};export{i as s_Hv61PDTfYz8};

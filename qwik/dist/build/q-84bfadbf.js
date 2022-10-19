@@ -1,0 +1,1 @@
+import{X as i}from"./q-6b1196de.js";const a=t=>i("div",{class:"digit",style:{left:50-Math.sin(Math.PI*t.digit/5)*40+"%",top:50+Math.cos(Math.PI*t.digit/5)*40+"%"},children:t.digit});export{a as s_A3AyLZbjfd8};
